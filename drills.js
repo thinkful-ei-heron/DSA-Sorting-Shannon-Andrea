@@ -49,3 +49,17 @@ First Item as pivot
 1st partition: 10, 12, 13, 9, 3, 14, 19, 16, 15, 17
 2nd partition: 3, 9, 10, 12, 13, 14, 19, 16, 15, 17
 */
+
+function bucketSort(array, low, high) {
+	const newArray = [];
+	for (let i = 0; i < high; i++) {
+		newArray[i] = '';
+	}
+
+	for (let i = 0; i < array.length; i++) {
+		newArray[array[i] - low] = array[i];
+	}
+	return newArray;
+}
+const bucketData = [ 8, 1, 9, 5, 4, 10, 6, 2, 3, 7 ];
+console.log(bucketSort(bucketData, 1, 10));
