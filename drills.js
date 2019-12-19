@@ -178,4 +178,38 @@ function shuffleArray(arr) {
 	}
 	return arr;
 }
-console.log(shuffleArray(bucketData));
+// console.log(shuffleArray(bucketData));
+
+const bookArr = [
+	'Game of Thrones',
+	'To kill a Mocking Bird',
+	'Lord of The Rings',
+	'BluePrint',
+	'Hunger Games',
+	'Harry Potter'
+];
+//8 Sorting Books
+function bookSort(array, start = 0, end = array.length) {
+	if (start >= end) {
+		return array;
+	}
+	const middle = partition(array, start, end);
+	array = bookSort(array, start, middle);
+	array = bookSort(array, middle + 1, end);
+	return array;
+}
+
+function bookPartition(array, start, end) {
+	const pivot = array[end - 1];
+	let j = start;
+	for (let i = start; i < end - 1; i++) {
+		if (array[i] <= pivot) {
+			swap(array, i, j);
+			j++;
+		}
+	}
+	swap(array, end - 1, j);
+	return j;
+}
+
+console.log(bookSort(bookArr));
